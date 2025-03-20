@@ -13,3 +13,13 @@ def cavityMap(grid):
     return(grid)
 
 print(cavityMap(grid))
+
+# def cavityMap(grid):
+#     # Convert list of strings to list of lists (manual method)
+#     grid_list = []
+#     for row in grid:
+#         print(list(row))
+#         grid_list.append(list(row))
+
+
+# cavityMap(grid)
