@@ -6,5 +6,3 @@ for i in range(1,length+1):
     arr [i-1] , arr [-i] = arr [-i], arr [i-1]
 
 print(arr)
-
-    
