@@ -153,9 +153,27 @@ def nth_multiple_of_fibo(k, n):
             
 
 # Print ASCII Value of a character
+
+def ascii_value(a):
+    print(f'value of ascii is {ord(a)}')
+
 # Sum of squares of first n natural numbers
+
+def squar_natural(n):
+    lst = []
+    for i in range(1,n+1):
+        lst.append(i*i)
+
+    print(lst)
+
 # Cube sum of first n natural numbers
 
+def cube_natural(n):
+    lst = []
+    for i in range(1,n+1):
+        lst.append(i*i*i)
+
+    print(lst)
 
 if __name__ == '__main__':
     # add_two(1,2)
@@ -169,5 +187,8 @@ if __name__ == '__main__':
     # all_prime(2,8)
     # print(nth_fibo(12))
     # nth_fibo(144)
-    print(nth_multiple_of_fibo(4,3))
+    # print(nth_multiple_of_fibo(4,3))
+    # ascii_value('c')
+    # squar_natural(9)
+    cube_natural(8)
     pass
