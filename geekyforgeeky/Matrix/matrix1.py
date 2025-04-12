@@ -32,18 +32,13 @@ def add_two(X,Y):
 
 
 # Multiply two matrices
-
+a  = []
 
 def mul_two(X,Y):
     result = [[0,0,0],
          [0,0,0],
          [0,0,0]]
 
-    for i in range(0,len(X)):
-        for j in range(len(X[0])):
-        # for j in range(0,i+1):
-            result[i][j] = X[i][j] * Y[i][j]
-    print (result)
 
 # Matrix Product
 # Adding and Subtracting Matrices
