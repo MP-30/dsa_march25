@@ -23,21 +23,20 @@ def add_two(X,Y):
     print (result)
 
 
-
-
-
-
-
-
-
-
 # Multiply two matrices
-a  = []
+a  = [[1,2],
+      [3,4]]
+b = [[4,5],
+     [6,7]]
 
-def mul_two(X,Y):
-    result = [[0,0,0],
-         [0,0,0],
-         [0,0,0]]
+
+def mul_two(a,b):
+    result = [[0,0],
+            [0,0]]
+    for i in range(0,len(a)):
+        for j in range(0,len(a[0])):
+            result[i][j] = 0
+
 
 
 # Matrix Product
@@ -50,6 +49,6 @@ def mul_two(X,Y):
 
 
 if __name__ == '__main__':
-    add_two(X,Y)
-    mul_two(X,Y)
+    # add_two(X,Y)
+    mul_two(a,b)
     pass
