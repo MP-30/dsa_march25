@@ -157,10 +157,83 @@ def check_vowels(to_vowels):
 
 
 # Count the Number of matching characters in a pair of string
+
+
+str11 = "aditya"
+str12 = "aditi"
+
+def find_matching(str11, str12):
+    count = 0
+    for i in str12:
+        if i in str11:
+            count +=1
+    print(count)
+
 # Remove all duplicates from a given string
+
+str21 = 'geeksforgeeks'
+Output = 'geksfor'
+
+def remove_duplicate(str21):
+    list = []
+    for i in range(0,len(str21)):
+        if str21[i] not in list:
+            list.append(str21[i])
+    print(''.join(list))
+
 # Least Frequent Character in String
+
+str31 = 'geeksforgeeks'
+def find_least_freq(str31):
+    dict = {}
+    for i in range(0,len(str31)):
+        if str31[i] not in dict:
+            dict[str31[i]] = 1
+        elif str31[i] in dict:
+            dict[str31[i]] += 1
+    min1 = 10000000000
+    for j in dict.values():
+        if j < min1:
+            min1 = j
+    final_answer = []
+    for key, value in dict.items():
+        if value == min1:
+            final_answer.append(key)
+    print(final_answer)
+        
+        
+
 # Maximum frequency character in String
+
+str41 = 'geeksforgeeks'
+def find_max_freq(str41):
+    dict = {}
+    for i in range(0,len(str41)):
+        if str41[i] not in dict:
+            dict[str41[i]] = 1
+        elif str41[i] in dict:
+            dict[str41[i]] += 1
+    min1 = 0
+    for j in dict.values():
+        if j > min1:
+            min1 = j
+    final_answer = []
+    for key, value in dict.items():
+        if value == min1:
+            final_answer.append(key)
+    print(final_answer)
+        
+
+
 # Check if a string contains any special character
+
+str51 = '@#$&%!~'
+str52 = 'fshdflhjksdklf&'
+def check_special(str51,str52):
+    for i in range(0,len(str52)):
+        if str52[i] in list(str51):
+            return True
+
 # Generating random strings until a given string is generated
 
 
@@ -177,5 +250,10 @@ if __name__ == '__main__':
     # convert_snake_pascal(snake_str)
     # find_length(to_length)
     # print_even(to_even)
-    print(check_vowels(to_vowels))
+    # print(check_vowels(to_vowels))
+    # find_matching(str11, str12)
+    # remove_duplicate(str21)
+    # find_least_freq(str31)
+    # find_max_freq(str41)
+    print(check_special(str51,str52))
     pass
