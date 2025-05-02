@@ -52,13 +52,18 @@ def delete_files(base_file_name, thread_count):
         except Exception as e:
             print(f"Error deleting file {base_file_name}_{j}: {e}")
 
+def drop_caches():
+    print("Dropping OS caches to force real disk reads...")
+    os.system("sync")
+    os.system("echo 3 | sudo tee /proc/sys/vm/drop_caches > /dev/null")
+
 def main():
     parser = argparse.ArgumentParser(description="Perform heavy read and write operations on an SSD.")
     parser.add_argument("--write_file", type=str, default="write_test.bin", help="Path to the write test file.")
     parser.add_argument("--read_file", type=str, default="write_test.bin", help="Path to the read test file.")
     parser.add_argument("--iterations", type=int, default=1, help="Number of read/write iterations.")
     parser.add_argument("--threads", type=int, default=2, help="Number of threads to use for concurrent operations.")
-    parser.add_argument("--size_gb", type=float, default=100.0, help="Size of data to read and write in GB.")
+    parser.add_argument("--size_gb", type=float, default=1.0, help="Size of data to read and write in GB.")
     parser.add_argument("--chunk_size_mb", type=int, default=1024, help="Size of each read/write chunk in MB.")
 
     args = parser.parse_args()
@@ -69,25 +74,33 @@ def main():
 
     for i in range(args.iterations):
         print(f"\n--- Iteration {i + 1} ---")
-        threads = []
+        write_threads = []
+        read_threads = []
 
         # Start write threads
         for j in range(args.threads // 2 + args.threads % 2):
             thread = threading.Thread(target=write_data, args=(args.write_file + f"_{j}", args.size_gb, args.chunk_size_mb))
-            threads.append(thread)
+            write_threads.append(thread)
             thread.start()
+
+        # Wait for all write threads to complete
+        for thread in write_threads:
+            thread.join()
+
+        # Drop caches before read
+        drop_caches()
 
         # Start read threads
         for j in range(args.threads // 2):
             thread = threading.Thread(target=read_data, args=(args.read_file + f"_{j}", args.size_gb, args.chunk_size_mb))
-            threads.append(thread)
+            read_threads.append(thread)
             thread.start()
 
-        # Wait for all threads to complete
-        for thread in threads:
+        # Wait for all read threads to complete
+        for thread in read_threads:
             thread.join()
 
-        # Delete all generated files
+        # Clean up
         delete_files(args.write_file, args.threads)
 
 if __name__ == "__main__":
