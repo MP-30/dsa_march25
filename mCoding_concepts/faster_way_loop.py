@@ -9,7 +9,6 @@
 #     finally:
 #         fp.close()
         
-        
 def cm_examples():
     with open ("test.txt", "w") as fp:
         fp.write("hello world")
