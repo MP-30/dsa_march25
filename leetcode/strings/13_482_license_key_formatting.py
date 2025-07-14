@@ -1,21 +1,23 @@
-# class Solution:
-#     def repeatedSubstringPattern(self, s: str) -> bool:
-#         n = len(s)
-
-#         # Iterate through all possible lengths of the repeating substring
-#         # The substring length 'l' must be a divisor of 'n'
-#         # and 'l' must be less than 'n' (i.e., 'l' can go up to n // 2)
-#         for l in range(1, n // 2 + 1):
-#             if n % l == 0:  # Check if 'l' is a divisor of 'n'
-#                 substring = s[:l]  # Extract the potential repeating substring
-                
-#                 # Construct the full string by repeating the substring
-#                 # num_repetitions = n // l
-#                 # repeated_string = substring * num_repetitions
-                
-#                 # Check if the constructed string matches the original
-#                 if substring * (n // l) == s:
-#                     return True
+'''
+Example 1:
+Input: s = "5F3Z-2e-9-w", k = 4
+Output: "5F3Z-2E9W"
+Example 2:
+Input: s = "2-5g-3-J", k = 2
+Output: "2-5G-3J"
+'''
+s = "5F3Z-2e-9-ww"
+k = 4
+# s1 = s.upper()
+# print(s1)
+def license(s,k):
+    s1 = (s.replace('-', '')).upper()
+    first_element = (len(s1)%k)
+    final_string_list = []
+    if first_element:
+        final_string_list.append(s1[0:first_element])
+    for i in range(first_element,len(s1), k):
+        final_string_list.append(s1[i:i+k])
+    return ('-'.join(final_string_list))        
         
-#         # If no repeating pattern is found after checking all possibilities
-#         return False
+print(license(s,k))
