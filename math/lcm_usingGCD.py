@@ -6,5 +6,11 @@ num1 = 54
 num2 = 24
 
 def compute_gcd(x,y):
-    while(True):
-        ...
+    while(y):
+        x,y = y, x%y
+    return x
+
+def compute_lcm(x,y):
+    lcm = (x*y)//compute_gcd(x,y)
+    return lcm
+print(compute_lcm(num1, num2))
