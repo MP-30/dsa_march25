@@ -10,20 +10,31 @@ It should allow the following operations to be performed efficiently:
 
 
 class UserDatabase:
+    def __init__(self):
+        self.users = []
     def insert(self, user):
-        ...
+        i = 0
+        while i < len(self.users):
+            if user.username < self.users[i].username:
+                break
+            i +=1
+        self.users.insert(i,user)
         
     def find(self, username):
-        ...
+        for user in self.users:
+            if user.username == username:
+                return user
         
     def update(self, user):
-        ...
+        target = self.find(user.username)
+        target.name, target.email = user.name, user.email
         
-    def remove(self,user):
-        ...
+    def remove(self,username):
+        target = self.find(username)
+        self.users.remove(target)
         
     def list_all(self):
-        ...
+        return self.user
 
 class User:
     def __init__(self, username, name, email):
@@ -62,3 +73,4 @@ print(database.find('aditya'))
 
 # print(type(aditya))
 # print(aditya)
+
