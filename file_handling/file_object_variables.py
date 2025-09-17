@@ -1,0 +1,6 @@
+f = open('file_handling/hello.txt',mode='r',encoding='UTF-8')
+print(f.name)
+print(f.read())
+print(f.mode)
+print(f.closed)
+print(f.encoding)

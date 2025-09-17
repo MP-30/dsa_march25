@@ -10,6 +10,7 @@ my_iterator = iter(my_list)
 
 # print(next(my_iterator))  # Raises StopIteration
 
-
-for i in my_list:
-    print(i)
+my_iterator1 = iter(my_list)
+print(next(my_iterator1))
+print(next(my_iterator1))
+print(next(my_iterator1))

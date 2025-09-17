@@ -21,5 +21,5 @@ result = new_sh(1,5 )
 
 print (next(result))
 
-for i in result:
-    print(i)
+# for i in result:
+#     print(i)
