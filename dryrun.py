@@ -221,14 +221,29 @@
 # sequence(10)
 
 
-a = input()
-a.split(' ')
-count = 0
-for i in a:
-    if i != ' ':
-        count += int(i)
-print(count)
+# a = input().split()
+# arr = a[1:]
+# print(arr)
+# count = 0
+# for i in arr:
+#     if i != ' ':
+#         count += int(i)
+# print(count)    
+
+
 
 # count = 0
 # for i in a:
     
+    
+# def swap(n_list):
+#     n_list[-1], n_list[0] = n_list[0],n_list[-1]
+#     return n_list
+# print(swap([12,41,29,32,7]))
+
+old_students = ['Manoj', 'Raju', 'Shiva' ]
+
+new_students = ['Akhil', 'Balu', 'Chitra']
+
+old_students.extend(new_students)
+print(old_students)
