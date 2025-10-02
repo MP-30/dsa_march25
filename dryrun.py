@@ -241,9 +241,61 @@
 #     return n_list
 # print(swap([12,41,29,32,7]))
 
-old_students = ['Manoj', 'Raju', 'Shiva' ]
+# old_students = ['Manoj', 'Raju', 'Shiva' ]
 
-new_students = ['Akhil', 'Balu', 'Chitra']
+# new_students = ['Akhil', 'Balu', 'Chitra']
 
-old_students.extend(new_students)
-print(old_students)
+# old_students.extend(new_students)
+# print(old_students)
+
+
+# a = [1,6,2,3,8,4,9,2]
+# def check(a):
+#     maxx = 0
+#     for i in a:
+#         if i > maxx:
+#             maxx = i
+#     print(maxx)
+    
+# check(a=a)
+
+
+# print(float('-inf'))
+# print(float('inf'))
+
+# a = [23,45,78,12,67,90]
+
+# def check(a,n):
+#     for i in range(n):
+#          a.append(a[0])
+#          a.pop(0)
+#     print(a)
+# check(a,n=2)
+
+# a = [[1,2,3],
+#      [4,5,6],
+#      [7,8,9]
+#      ]
+# b = [[9,8,7],
+#      [6,5,4],
+#      [3,2,1]
+#      ]
+
+# def check(a,b):
+#     for i in range(len(a)):
+#         for j in range(len((a)[0])):
+#             a[i][j] = a[i][j] + b[i][j]
+#     print(a)
+# check(a,b)
+
+def nn():
+    n = int(input())
+    a = list(map(int,(input()).split()))
+    x = (input())
+    for j in range(len(a)-1,-1,-1):
+        if a[j] == x:
+            a.pop(a[j])
+    return a
+
+print(nn())
+
