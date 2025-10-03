@@ -288,14 +288,57 @@
 #     print(a)
 # check(a,b)
 
-def nn():
-    n = int(input())
-    a = list(map(int,(input()).split()))
-    x = (input())
-    for j in range(len(a)-1,-1,-1):
-        if a[j] == x:
-            a.pop(a[j])
-    return a
+# def nn():
+#     n = int(input())
+#     a = list(map(int,(input()).split()))
+#     x = (input())
+#     for j in range(len(a)-1,-1,-1):
+#         if a[j] == x:
+#             a.pop(a[j])
+#     return a
 
-print(nn())
+# print(nn())
 
+
+# a = list(map(int, input().split()))
+# print(a[1:])
+
+# def main():
+#     # YOUR CODE GOES HERE
+#     # Please take input and print output to standard input/output (stdin/stdout)
+#     # E.g. 'input()/raw_input()' for input & 'print' for output
+#     num_of_element = int(input())
+#     arr = list(map(int, input().split()))
+#     x = int(input())
+    
+#     x = x-1
+#     x = -1 * x
+#     print(x)
+#     for i in range(len(arr)-1,-1,-1):
+#         if i == x:
+#             arr.pop(i)
+#     print(arr)
+    
+# main()
+
+# a = [292, 658, 616, 208, 544, 39, 33, 736, 203, 996, 558, 91, 468, 449, 536, 403, 59, 613, 520, 714, 333, 696, 527, 451, 576, 78, 315, 183, 661, 402, 481, 952, 59, 96, 160, 954, 486, 544, 689, 689, 892, 599, 131, 359, 47, 18, 113, 457, 982, 633, 170, 315, 680, 48, 117, 256, 477, 783, 438, 137, 185, 270, 441, 595, 717, 600, 549, 202, 589, 242, 386, 539, 372, 745, 937, 741, 209, 394, 723, 841, 563, 389, 521, 963, 505, 128, 439, 640, 917, 928, 176, 186, 368, 770, 254, 967, 670, 455, 461, 611, 697, 847, 501, 420, 943, 438, 513, 503, 831, 235, 344, 745, 623, 216, 707, 479, 343, 498, 118, 611, 425, 293, 796, 792, 415, 401, 110, 436, 855, 922, 398, 903, 120, 899, 675, 62, 336, 187, 565, 518, 421, 260, 262, 395, 827, 321, 873, 521, 818, 343, 131, 594, 987, 278, 385, 753, 678, 846, 189, 532, 767, 938, 787, 887, 836, 461, 300, 523, 999, 216, 40, 771, 475, 654, 165, 301, 974, 389, 821, 143, 731, 303, 736, 70, 580, 120, 822, 257, 965, 10, 141, 83, 300, 927, 969, 487, 739, 269, 10, 89, 484, 401, 859, 3]
+
+# for i in a:
+     
+num = int(input())
+a = 1
+mx = []
+result = []
+for _ in range(num):
+    b = list(map(int, input().split()))
+    mx.append(b)
+for i in range(1,len(mx)+1):
+    if i %2 != 0:
+        for j in range(num):
+            result.append(mx[i-1][j])
+    elif i % 2 ==0:
+        for j in range(num-1,-1,-1):
+            result.append(mx[i-1][j])
+            
+for i in result:
+    print(i,end=" ")
