@@ -325,20 +325,82 @@
 
 # for i in a:
      
-num = int(input())
-a = 1
-mx = []
-result = []
-for _ in range(num):
-    b = list(map(int, input().split()))
-    mx.append(b)
-for i in range(1,len(mx)+1):
-    if i %2 != 0:
-        for j in range(num):
-            result.append(mx[i-1][j])
-    elif i % 2 ==0:
-        for j in range(num-1,-1,-1):
-            result.append(mx[i-1][j])
+# num = int(input())
+# a = 1
+# mx = []
+# result = []
+# for _ in range(num):
+#     b = list(map(int, input().split()))
+#     mx.append(b)
+# for i in range(1,len(mx)+1):
+#     if i %2 != 0:
+#         for j in range(num):
+#             result.append(mx[i-1][j])
+#     elif i % 2 ==0:
+#         for j in range(num-1,-1,-1):
+#             result.append(mx[i-1][j])
             
-for i in result:
-    print(i,end=" ")
+# for i in result:
+#     print(i,end=" ")
+
+# length = int(input())
+# arr = []
+# result = []
+# for _ in range(length):
+#     a = list(map(int, input().split()))
+#     arr.append(a)
+# for j in range(length):
+#     for i in range(length):
+#         result.append(arr[i][j])
+# print(arr)
+# print(result)
+
+# a = 1,
+# print(type(a))
+# a = '123'
+# print(hex(id(a)))
+# b =a.replace('1','4')
+# print(hex(id(b)))
+
+
+# name_lst = ["Vijay", "Vickey"]
+
+# tup = ("Item_1", 0.5, name_lst)
+
+# name_lst.append("Vishal")
+# print(tup)
+
+
+# elements = (10,20,30,40,50,60,70,80)
+
+# print(elements[2:5], elements[:4], elements[3:100])
+
+
+# tuple1 = (1150, 877, 909)
+# print(max(tuple1))
+
+# tuple1[0] = 50
+
+
+# tt = (1, 2, 3, "Hello", [4, 8, 16], 2, "Hello")
+# def odd_even_split_tuple(tup):
+#     ''' input:tup-indicates the tuple
+#          output:print two tuples one for even indexed and odd indexed in the given output format'''
+    
+#     # YOUR CODE GOES HERE
+#     Odd = []
+#     Even = []
+#     for i in range(1,len(tup)+1):
+#         if i % 2 == 0:
+#             Even.append(tup[i-1])
+#         elif i % 2 != 0:
+#             Odd.append(tup[i-1])
+
+#     print(f"Off: {tuple(Odd)}")
+#     print(f"Even: {tuple(Even)}")
+# odd_even_split_tuple(tt)
+
+
+set1 = {1, 2, 4}
+set2 = {4, 5, 6}
+print(len(set1 + set2))
