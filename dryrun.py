@@ -401,6 +401,593 @@
 # odd_even_split_tuple(tt)
 
 
-set1 = {1, 2, 4}
-set2 = {4, 5, 6}
-print(len(set1 + set2))
+
+class DemoClass:
+    '''
+    instance method use a self parameter pointing to an instance of the class. They
+    can access and modify instance state through self and class state self.__class__.
+    These are the most common method in Python classes.
+    '''
+    def instance_method(self):
+        return ("instance method called", self)
+
+
+    '''
+    Class methods use cls paramenter pointing to the class itself. They can modigy class
+    level state though cls, but they can't modify individual instance state
+    '''
+    @classmethod
+    def class_method(cls):
+        return ("class method called", cls)
+    
+    
+    '''
+    Static methods dont take self or cls parameters. They can't modity instance or class state 
+    directly, and you will use them for organizational purposes and namespacing.
+    '''
+    @staticmethod
+    def static_method():
+        return ("static method clalled")
+    
+obj = DemoClass()
+
+# print(obj)
+
+# print(obj.instance_method())
+
+# print(obj.class_method())
+
+# print(obj.static_method())
+
+# print(DemoClass.class_method())
+
+# print(DemoClass.static_method())
+
+# print(DemoClass.instance_method())
+
+
+# def logger(func):
+#     def wrapper(* args, ** kwargs):
+#         print(f'Calling {func.__name__}')
+#         return func(*args, **kwargs)
+#     return wrapper
+
+# @logger
+# def greet(name):
+#     print('Hello {name}')
+
+# greet('aditya')
+
+# from functools import lru_cache
+
+# @lru_cache(maxsize=128)
+# def fibonacci(n):
+#     if n < 2:
+#          return n
+#     return fibonacci(n-1) + fibonacci(n-2)
+
+# def cache(func):
+#     memory = {}
+#     def wrapper(*args):
+#         if args not in memory:
+#             memory[args] = func(*args)
+#         return memory[args]
+#     return wrapper
+
+
+# class Animals:
+#     def speak(self):
+#         pass
+# class Dog(Animals):
+#     def speck(self):
+#         return 'Woof'
+# class Cat(Animals):
+#     def speak(self):
+#         return 'Meow'
+
+
+# def count_up_to(n):
+#     for i in range(1, n+1):
+#         yield i 
+        
+# for num in count_up_to(3):
+#     print(num)
+
+# nums = [1,2,3,4]
+
+# gen = (x * x for x in nums)
+# print(next(gen))
+# print(next(gen))
+# print(next(gen))
+# print(list(gen))
+
+# class InvalidAgeError(Exception):
+#     def __init__(self, message= 'Age must be >= 18'):
+#         self.message = message
+#         super().__init__(self.message)
+
+# import asyncio
+
+# async def task():
+#     print('Start')
+#     await asyncio.sleep(1)
+    
+#     print('Done')
+    
+# asyncio.run(task())
+
+class Singleton:
+    _instance = None
+    def __new__(cls, *a, **kw):
+        if not cls.__instance:
+            cls.__instance = super().__new__(cls)
+            
+        return cls._instance
+    
+def find_total(n):
+    count = 0
+    def is_prime(n):
+        if n <2:
+            return False
+        for i in range(2,int(n**0.5)+1):
+            if n % i ==0:
+                return False
+        return True
+    for i in range(1, n+1):
+        if is_prime(i):
+            count +=1
+    return count
+            
+# print(find_total(19))
+
+def rotate(a,n=0):
+    max_num = max(a)
+    count = 0
+    for  i in a:
+        if i != max_num:
+            local_count = max_num - i
+            count +=local_count
+            
+    print(count)
+    
+A = [2]
+
+def checck(a):
+    m = max(A)
+    n = 0
+    for i in A:
+        if i < m and i >n:
+            n = i
+    if n:
+        return n
+    else: return (-1)
+    
+    
+    
+class Solution:
+    # @param A : string
+    # @return a strings
+    def solve(self, A):
+        A = A+A
+        a = list(A)
+        new = a 
+        for i in range(len(a)-1,-1,-1):
+            if a[i].isupper():
+                a.pop(i)
+            elif a[i] in ['a','e','i','o','u']:
+                a[i] = '#'
+        return (''.join(a))
+    
+    
+def hel(a):
+    a = list(a)
+    for i in range(0,len(a)):
+        if a[i].isupper():
+            a[i] = a[i].lower()
+        elif a[i].islower():
+            a[i] = a[i].upper()
+        
+    return(''.join(a))
+
+
+def hehe(a):
+    count = 0
+    for i in range(0,len(a)):
+        if a[i] =='b' and i <= len(a)-3:
+            if a[i+1] == 'o' and a[i+2] == 'b':
+                count +=1
+    return (count)
+
+def solve1(A):
+        vow = ['a','e','i','o','u','A','E','I','O','U']
+        count = 0
+        for i in range(0,len(A)):
+            if A[i] in vow:
+                count += (len(A)-i)
+        return count
+    
+# A = 'anagram'
+# print(solve1(A))
+
+
+def ss(logs):
+    result = []
+    
+    for i in logs:
+        for j,k in i.items():
+            result0 = []
+            for m,n in k.items():
+                if m == 'level':
+                    result.append(f"[{n}]")
+                else:
+                    result.append(f"{n}")
+                    
+
+def chuc(logs):
+    result = []
+    for i in logs.values():
+        for j in i:
+            result.append(j)
+    sorted_k = sorted(result, key=lambda dic: dic['timestamp'] )
+    for a in sorted_k:
+        time = a['timestamp']
+        lev = a['level']
+        err = a['message']
+        print(f"{time} [{lev}] {err}")
+
+
+# 2024-07-18 10:15:00 [ERROR] Database connection failed
+# 2024-07-18 10:24:00 [WARNING] Suspicious login attempt detected
+# 2024-07-18 14:00:00 [ERROR] External Authencation Service Down
+# 2024-07-18 14:42:00 [INFO] Backup Started
+# 2024-07-18 14:47:00 [WARNING] Multiple attempts detected
+
+      
+logs = {
+        "Database_logs": [
+            { "timestamp": "2024-07-18 10:15:00", "level": "ERROR", "message": "Database connection failed" },
+            { "timestamp": "2024-07-18 14:42:00", "level": "INFO", "message": "Backup Started" }
+        ],
+        "Authentication_logs": [
+            { "timestamp": "2024-07-18 14:00:00", "level": "ERROR", "message": "External Authentication Service Down" },
+            { "timestamp": "2024-07-18 10:24:00", "level": "WARNING", "message": "Suspicious login attempt detected" },
+            { "timestamp": "2024-07-18 14:47:00", "level": "WARNING", "message": "Multiple attempts detected" }
+        ]
+        }
+
+# print(chuc(logs))
+
+
+def recur(n):
+    if n ==0:
+        return
+    else:
+        recur(n-1)
+     
+
+# (recur(5))
+cache = {}
+def  febo(n):
+    if cache.get(n) is not None:
+        return cache[n]
+    if n ==1 or n==2:
+        return 1
+    elif n ==0:
+        return 0
+    cache[n-1] = febo(n-1)
+    cache[n-2] = febo(n-2)
+    return cache[n-1] + cache[n-2]
+# print(febo(4))
+
+
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def solve(self, A):
+        if A == 0 or A == 1:
+            return 1
+        ss = Solution()
+        ans = A * ss.solve(A-1)
+        return ans 
+# sss = Solution()
+# print(sss.solve(4))
+
+def chuchu(a):
+    if a ==2 or a ==1 :
+        return 1
+    ans = chuchu(a-1) + chuchu(a-2)
+    
+    return ans
+
+def chichi(a):
+    if a ==0:
+        print()
+        return
+    print(a, end=' ')
+    chichi(a-1)
+    
+    
+def bar(x,y):
+    if y ==0:
+        return 0
+    
+    return (x + bar(x,y-1))
+
+def foo(x,y):
+    if y ==0:
+        return 1
+    return bar(x, foo(x, y-1))
+
+# print(foo(3,5))
+
+def fun(x,n):
+    if n==0:
+        return 1
+    elif (n % 2) == 0:
+        return fun(x * x , n//2)
+    else:
+        return x * fun(x * x, (n-1)//2)
+    
+# ans = fun(2,10)
+# print(ans)
+
+def ssolve(a):
+    if a == 0:
+        return 0
+    return a % 10 + ssolve(a // 10) 
+    
+    
+# print(ssolve(12346))
+
+'''
+num = 123
+output = 321
+'''
+
+def ssolve(num, a = 0):
+    if num == 0:
+        return a
+    a = a*10 + num%10
+    a = ssolve(num//10, a)
+    return a
+    
+# print(ssolve(123))
+def solve(A):
+        st = []
+        for i in A:
+            if not st:
+                st.append(i)
+            elif st and st[-1] == i:
+                st.pop()
+            else:
+                st.append(i)
+        return (''.join(st))
+        
+# A = 'abccbc'
+# print(solve(A)) 
+
+def rate_limit_stream(timestamps, K, T):
+    # Your Code goes here
+    from collections import deque
+    aa = deque()
+    result = []
+    for t in timestamps:
+        while aa and aa[0] <= t-T:
+            aa.popleft()
+            
+        if len(aa) <K:
+            result.append(1)
+            aa.append(t)
+        else:
+            result.append(0)       
+    return result
+    
+
+class Solution:
+    # @param A : list of strings
+    # @return an integer
+    def evalRPN(self, A):
+        stack = []
+
+        for token in A:
+            if token not in {"+", "-", "*", "/"}:
+                stack.append(int(token))
+            else:
+                b = stack.pop()
+                a = stack.pop()
+
+                if token == "+":
+                    stack.append(a + b)
+                elif token == "-":
+                    stack.append(a - b)
+                elif token == "*":
+                    stack.append(a * b)
+                else:  # division
+                    stack.append(int(a / b))  # truncates toward zero
+
+        return stack[-1]
+    
+    
+# -------------
+
+
+import operator
+
+
+def solutions(A):
+    stack = []
+    for i in range(0,len(A)):
+        if A[i] == '+':
+            right = stack.pop()
+            left = stack.pop()
+            stack.append(left + right)
+        elif A[i] == '-':
+            right = stack.pop()
+            left = stack.pop()
+            stack.append(left - right)
+        elif A[i] == '*':
+            right = stack.pop()
+            left = stack.pop()
+            stack.append(left * right)
+        elif A[i] == '/':
+            right = stack.pop()
+            left = stack.pop()
+            stack.append(left // right)
+        else:
+            stack.append(int(A[i]))
+    
+    return(stack[0])
+        
+# A =   ["4", "13", "5", "/", "+"]
+# solutions(A)
+
+
+
+def ssorted(A,B):
+    n = len(A)
+    
+    def find_left():
+        low, high = 0, n-1
+        ans = -1
+       
+A = [1, 2, 4, 4, 4, 5, 9]
+B = 4
+
+# print(ssorted(A,B))
+
+
+class Student:
+    def __init__(self):
+        self.age = 0
+        self.name = ""
+
+    def display(self):
+        print("My name is", self.name + ". I am", self.age, "years old")
+
+
+# # Main code
+# s1 = Student()
+# s1.age = 10
+
+# s2 = s1
+
+# s2.display()
+
+
+arr1 = [5,11,13,15,21]
+arr2 = [2,4,8,10]
+
+def sorted_arr(arr1, arr2):
+    result = []
+    i = 0
+    j = 0
+    while i < len(arr1) and j < len(arr2):
+        if arr1[i] <= arr2[j]:
+            result.append(arr1[i])
+            i +=1
+        else:
+            result.append(arr2[j])
+            j+=1
+    while i < len(arr1):
+        result.append(arr1[i])
+        i+=1
+        
+    while j < len(arr2):
+        result.append(arr2[j])
+        j +=1
+        
+    return result 
+# print(sorted_arr(arr1, arr2))
+
+def mini(A):
+    b =sorted(A)
+    return(b)
+
+# A = [1,4,10,2,1,5]
+# print(mini(A))
+
+
+# a  = [9,2,8]
+# b = [5,6,7]
+# if b<a:
+#     print(8)
+# else:
+#     print(9)
+    
+    
+def moveZerosToEnd(A):
+    pos = 0 
+    for num in A:
+        if num != 0:
+            A[pos] = num
+            pos += 1
+    while pos < len(A):
+        A[pos] = 0
+        pos += 1
+    
+    return A
+
+def check(a, b):
+    def left():
+        left = 0
+        right = len(a)-1
+        ans = -1
+        while left <= right:
+            mid = (left + right)//2
+            if a[mid] == b:
+                ans = mid
+                right = mid -1
+            elif a[mid] < b:
+                left = mid +1
+            else:
+                right = mid -1
+        return ans
+    
+    def right():
+        left = 0
+        right = len(a)-1
+        ans = -1
+        while left <= right:
+            mid = (left + right)//2
+            if a[mid] == b:
+                ans = mid
+                left = mid +1
+            elif a[mid] < b:
+                left = mid +1
+            else:
+                right = mid -1
+        return ans
+    
+    return ([left(), right()])
+    
+# a = [5,7,7,8,8,10]
+# b = 8
+
+# print(check(a, b))\
+    
+# import argparse
+
+# parser = argparse.ArgumentParser()
+
+# parser.add_argument("a", type=int, help='First number')
+# parser.add_argument("b", type=int, help='Second number')
+
+# arg = parser.parse_args()
+
+# print("SUm", arg.a + arg.b)
+
+
+A = [26,32,71,69,84,22,33,37,44]
+B = 4
+C = 5
+
+def solveOne(A, B, C):
+    a = A[:B]
+    b = A[B:C+1]
+    if C < len(A)-1:
+        c = A[C+1:]
+    else:
+        c = []
+    return(a+sorted(b)+c)
+    
+print(solveOne(A,B,C))
