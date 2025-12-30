@@ -1,17 +1,24 @@
-def solve(A):
-    left_prefix = [A[0]]
-    right_prefix = [A[-1]]
-    for i in range(1,len(A)):
-        left_prefix.append(left_prefix[-1]+A[i])
-    for j in range(len(A)-2,-1,-1):
-        right_prefix.append(right_prefix[-1]+A[j])
-    
-    for k in range(0,len(A)):
-        if(left_prefix[k] ==  right_prefix[(len(A)-1) - k]):
-            return k
-    else:
-        return -1
+'''
+Given an array find the length of smallest 
+subarray which contains both min and max of array.
+'''
 
-# A = [-7,1,5,2,-4,3,0]
-A = [1,2,3]
-print(solve(A))
+
+def solve(A,B):
+    left = 0
+    sum = 0
+    right = 0
+    count = 0
+    while right < len(A):
+        sum += A[right]
+        while sum >= B and left <=right:
+            sum -= A[left]
+            left +=1
+        count += right - left +1
+        right +=1
+    return count
+
+a = [1,11,2,3,15]
+b = 10
+c = [1,12,14,17,32]
+print(solve(a,b))
