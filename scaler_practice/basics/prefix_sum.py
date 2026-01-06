@@ -1,24 +1,28 @@
 '''
-Given an array find the length of smallest 
-subarray which contains both min and max of array.
+Given an array of N element. Find the 
+maximum subarray sum for subarray with length R.
 '''
 
 
 def solve(A,B):
-    left = 0
-    sum = 0
-    right = 0
-    count = 0
-    while right < len(A):
-        sum += A[right]
-        while sum >= B and left <=right:
-            sum -= A[left]
-            left +=1
-        count += right - left +1
-        right +=1
-    return count
-
-a = [1,11,2,3,15]
-b = 10
-c = [1,12,14,17,32]
-print(solve(a,b))
+    average = sum(A[:B])
+    min_avg = average
+    print(A[:B])
+    index_value = 0
+    i = 0
+    j = B
+    while j < len(A):
+        average = average - A[i]
+        average += A[j]
+        if average < min_avg:
+            min_avg = average
+            index_value = i +1
+        j +=1
+        i +=1
+    return index_value
+    
+# A = [3,7,90,20,10,50,40]
+A = [15,3,15,6,9,14,8,10,9,17]
+# B = 3
+B = 1
+print(solve(A,B))
