@@ -1,30 +1,31 @@
-arr = [
-    [1,2,3,4],
-    [5,6,7,8],
-    [9,10,11,12]]
-b = 2
+arr = [[1,2,3],[4,5,6],[7,8,9]]
 
 def solve(arr):
-    n = len(arr)
-    m = len(arr[0])
-    for col in range(m-1,-1,-1):
-        j = col
-        i = 0
-        while i < n and j >=0:
-            print(arr[i][j], end=" ")
-            i +=1
-            j -=1
-        print()
-    for row in range(1,n):
-        i = row
-        j = m-1
-        while j >=0 and i <n:
-            print(arr[i][j],end=' ')
-            i +=1
-            j -=1
-        print()
-    
+    result = []
+    for i in range(len(arr[0])):
+        row = 0
+        col = i
+        dd = [] 
+        while row < len(arr) and col >=0:
+            dd.append(arr[row][col])
+            row +=1
+            col -=1
+        while len(dd)< len(arr):
+            dd.append(0)
+        result.append(dd)
+    for j in range(1,len(arr)):
+        dd = []
+        row = j
+        col = len(arr)-1
+        while row < len(arr) and col >=0:
+            dd.append(arr[row][col])
+            row +=1
+            col -=1
+        while len(dd)< len(arr):
+            dd.append(0)
+        result.append(dd)
+        
+    return result    
+    ...
+        
 print(solve(arr))
-
-
-a = [2,3,4,5,6,7,1]
