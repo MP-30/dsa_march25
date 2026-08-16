@@ -8,7 +8,9 @@ def open_file(file, mode):
     finally:    
         f.close()
 
-with open_file('sample3.txt', 'w') as f:
+# with open_file('sample3.txt', 'w') as f:
+#     f.write('helo this is another test run')
+with open_file('sample3.txt', 'r') as f:
     f.write('helo this is another test run')
 
 print(f.closed)
