@@ -7,15 +7,21 @@ Query (4,-2)
 Query(3,1)
 '''
 a = [0,0,0,0,0,0,0]
-Query1 = (1,3)
-Query2 = (4,-2)
-Query3 = (3,1)
+q = ( (1,3), (4,-2), (3,1))
 
-def solve(a, q1,q2,q3):
-    result = a
-    for i in (q1,q2,q3):
-        for j in range(i[0],len(a)):
-            result[j] += i[1]
-    return result
+def solve(a, q):
+    length = len(a)
+    for i in q:
+        a[i[0]] += i[1]
+    for j in range(1,length):
+        a[j] = a[j-1] + a[j]
+    return(a)
 
-print(solve(a,Query1,Query2,Query3))
+# def solve1(a, q1,q2,q3):
+#     result = a
+#     for i in (q1,q2,q3):
+#         for j in range(i[0],len(a)):
+#             result[j] += i[1]
+#     return result
+
+print(solve(a,q))
