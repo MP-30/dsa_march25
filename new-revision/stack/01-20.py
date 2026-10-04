@@ -1,4 +1,5 @@
 s = "{[()]}"
+s1 = "{{]{})()"
 def isValid(s):
     stack = []
     bracket_map = {")": "(", "}": "{", "]": "["}
@@ -10,4 +11,4 @@ def isValid(s):
                 return False
             stack.pop()
     return len(stack) == 0
-print(isValid(s))
+print(isValid(s1))
